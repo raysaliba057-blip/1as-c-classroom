@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fr" data-theme="dark"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07090f"><title>1AS-C · Espace de classe</title>
+<link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script>
+</head><body>
+<main class="wrap">
+ <header><div class="logo">1<b>AS</b><span>-C</span></div><div class="tag" id="roleTag">🎓 Élève</div><div class="spacer"></div><button class="tag" id="delegateBtn">🛡️ Connexion délégué</button><button class="tag hidden" id="logoutBtn">⎋ Déconnexion</button></header>
+ <p class="intro">Espace de classe · devoirs, contrôles et points à retenir</p>
+ <section class="stats" id="stats" aria-label="Résumé"></section>
+ <section class="panel hidden" id="loginPanel"><div class="panelHead"><h2>🛡️ Espace délégué</h2><button class="close" id="closeLogin" aria-label="Fermer">×</button></div><p class="muted">Connecte-toi pour publier ou supprimer des informations pour toute la classe.</p><form id="loginForm"><label for="password">Mot de passe du délégué</label><input id="password" type="password" autocomplete="current-password" minlength="1" required><button class="btn yellow" type="submit">Se connecter</button><p class="error" id="loginError" role="alert"></p></form></section>
+ <section class="panel hidden" id="composePanel"><h2>➕ Nouvelle publication</h2><form id="postForm" class="add">
+  <label>Type<select name="type"><option value="hw">📚 Devoir</option><option value="test">⚡ Contrôle</option><option value="talk">💬 Point à retenir</option></select></label>
+  <label>Date (facultative)<input name="date" type="date"></label>
+  <label class="full">Matière<input name="subject" maxlength="80" placeholder="Ex. Mathématiques" required></label>
+  <label class="full">Titre<input name="title" maxlength="160" placeholder="Ex. Exercices page 42" required></label>
+  <label class="full">Détails<textarea name="notes" rows="3" maxlength="5000" placeholder="Chapitres, pages, consignes…"></textarea></label>
+  <label class="full">Images (3 maximum, 5 Mo par image)<input name="images" id="images" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple></label>
+  <div class="full muted" id="fileHint">Les images seront enregistrées sur le serveur pour toute la classe.</div>
+  <button class="btn yellow full" id="publishBtn" type="submit">Publier pour toute la classe</button><p class="error full" id="postError" role="alert"></p>
+ </form></section>
+ <nav class="tabs" id="tabs" aria-label="Catégories"><button class="tab active" data-type="hw">📚 Devoirs</button><button class="tab" data-type="test">⚡ Contrôles</button><button class="tab" data-type="talk">💬 Points à retenir</button></nav>
+ <div class="chips" id="chips"></div><div id="list" aria-live="polite"><div class="empty">Chargement des publications…</div></div>
+ <footer>1AS-C · Les publications sont partagées avec toute la classe.</footer>
+</main>
+<div class="toast" id="toast" role="status"></div><div class="lightbox hidden" id="lightbox"><button class="close" id="closeLightbox">×</button><img alt="Image agrandie" id="lightboxImage"></div>
+</body></html>
